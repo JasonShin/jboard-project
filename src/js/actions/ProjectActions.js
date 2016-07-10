@@ -1,32 +1,32 @@
 import dispatcher from "../dispatcher";
 
-export function createTodo(text) {
+export function createProject(text) {
     dispatcher.dispatch({
-        type: "CREATE_TODO",
+        type: "CREATE_PROJECT",
         text
     });
 }
 
-export function deleteTodo(id) {
+export function deleteProject(id) {
     dispatcher.dispatch({
-        type: "DELETE_TODO",
+        type: "DELETE_PROJECT",
         id
     });
 }
 
-export function reloadTodos() {
+export function reloadProjects() {
 
-    dispatcher.dispatch({type: "FETCH_TODOS"});
+    dispatcher.dispatch({type: "FETCH_PROJECTS"});
     setTimeout(() => {
-        dispatcher.dispatch({type: "RECEIVE_TODOS", todos: [
+        dispatcher.dispatch({type: "RECEIVE_PROJECTS", projects: [
             {
                 id: 11384714,
-                text: "new todo 1",
+                text: "new project 1",
                 complete: false,
             },
             {
                 id: 12083012930,
-                text: "new todo 2",
+                text: "new project 2",
                 complete: false,
             },
         ]})

@@ -2,13 +2,14 @@ import {EventEmitter} from 'events';
 
 import dispatcher from '../dispatcher';
 
-class TodoStore extends EventEmitter {
+class ProjectStore extends EventEmitter {
     constructor() {
         super();
-        this.todos = [
+        //This is just an example
+        this.projects = [
             {
                 id: 11384714,
-                text: "shiasfasfaft",
+                text: "zzzfaft",
                 complete: false,
             },
             {
@@ -19,8 +20,8 @@ class TodoStore extends EventEmitter {
         ];
     }
 
-    createTodo(text) {
-        this.todos.push({
+    createProject(text) {
+        this.projects.push({
             id: Date.now(),
             text,
             complete: false,
@@ -30,26 +31,25 @@ class TodoStore extends EventEmitter {
     }
 
     getAll() {
-        return this.todos;
+        return this.projects;
     }
 
     handleActions(action) {
         switch(action.type) {
-            case "CREATE_TODO":
-                this.createTodo(action.text);
+            case "CREATE_PROJECT":
+                this.createProject(action.text);
                 break;
-            case "RECEIVE_TODOS":
-                this.todos = action.todos;
+            case "RECEIVE_PROJECT":
+                this.projects = action.projects;
                 this.emit("change");
                 break;
         }
-        console.log('TodoStore received an action', action);
+        console.log('ProjectStore received an action', action);
     }
 }
 
-const todoStore = new TodoStore;
-dispatcher.register(todoStore.handleActions.bind(todoStore));
+const projectStore = new ProjectStore;
+dispatcher.register(projectStore.handleActions.bind(projectStore));
 
-window.dispatcher = dispatcher;
-//window.todoStore = todoStore;
-export default todoStore;
+window.projectStore = projectStore;
+export default projectStore;

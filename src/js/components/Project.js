@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Todo extends React.Component {
+export default class Project extends React.Component {
     render() {
         const { text } = this.props;
 
