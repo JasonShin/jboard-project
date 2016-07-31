@@ -1,0 +1,12 @@
+/* SETTINGS */
+@import "settings/global";
+@import "settings/colors";
+
+/* GENERIC */
+@import "generic/reset";
+
+/* COMPONENTS */
+@import "components/primaryNav";
+@import "components/upcomingEvent";
+@import "components/projects";
+@import "components/singleProject";

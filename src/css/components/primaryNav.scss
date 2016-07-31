@@ -1,0 +1,26 @@
+.primaryNav {
+
+  height: 100px;
+  border: 1px solid black;
+  overflow: hidden;
+
+  .leftSide {
+    float: left;
+    width: 40%;
+  }
+
+  .centerSide{
+    float: left;
+    width: 20%;
+  }
+
+  .rightSide {
+    float: left;
+    width: 40%;
+  }
+
+  .logo {
+    width: 150px;
+
+  }
+}

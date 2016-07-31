@@ -4,13 +4,10 @@ import Project from '../components/Project';
 import ProjectStore from '../stores/ProjectStore';
 import * as ProjectActions from '../actions/ProjectActions';
 
-import '../../css/global.scss';
-
 export default class ProjectsPage extends React.Component {
 
     state = {
-        projects: ProjectStore.getAll(),
-        projectName: null
+        projects: ProjectStore.getAll()
     };
 
     constructor() {
@@ -20,14 +17,7 @@ export default class ProjectsPage extends React.Component {
 
     //Invoked after component mounted
     componentDidMount() {
-        console.log("component did mount");
         ProjectStore.on("change", this.getProjects);
-    }
-
-    //Invoked before component mounted
-    componentWillMount() {
-        console.log("component will mount");
-        //ProjectStore.on("change", this.getProjects);
     }
 
     //Unbound them safely
@@ -37,8 +27,6 @@ export default class ProjectsPage extends React.Component {
 
     //Event callback for getting all projects
     getProjects() {
-        console.log("getting project from store! method");
-
         this.setState({
             projects: ProjectStore.getAll()
         });
@@ -55,6 +43,11 @@ export default class ProjectsPage extends React.Component {
         ProjectActions.createProject(this.state.projectName);
     }
 
+    createProjectComponents() {
+        return projects.map((project) => {
+            return (<Project  />);
+        });
+    }
 
     //Render
     render() {
@@ -67,11 +60,11 @@ export default class ProjectsPage extends React.Component {
 
         return (
             <div id="ProjectsContainer" class="row">
-                <label>{this.state.projectName}</label><br />
-                <input type="text" onChange={this.handleProjectNameChange.bind(this)} />
-                <input type="submit" onClick={this.onCreateClick.bind(this)} />
                 <h1>Projects!</h1>
-                {ProjectComponents}
+
+                <div class="ProjectsDraggableContainer">
+                    {ProjectComponents}
+                </div>
             </div>
         );
     }

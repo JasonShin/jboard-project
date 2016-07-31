@@ -6,9 +6,7 @@ import * as TaskActions from '../actions/TaskActions';
 import * as ProjectActions from '../actions/ProjectActions';
 
 //Components
-import CommandPanel from '../components/Project/CommandPanel';
-
-import '../../css/global.scss';
+import CommandPanel from '../components/layout/CommandPanel';
 
 /**
  * Responsibilities:
