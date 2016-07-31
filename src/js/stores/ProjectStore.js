@@ -3,31 +3,32 @@ import {EventEmitter} from 'events';
 import dispatcher from '../dispatcher';
 
 class ProjectStore extends EventEmitter {
+
+    projects = [];
+
     constructor() {
         super();
-        //This is just an example
-        this.projects = [
-            {
-                id: 11384714,
-                text: "zzzfaft",
-                complete: false,
-            },
-            {
-                id: 12083012930,
-                text: "crap",
-                complete: false,
-            }
-        ];
     }
 
     createProject(text) {
         this.projects.push({
             id: Date.now(),
             text,
-            complete: false,
+            complete: false
         });
 
         this.emit("change");
+    }
+
+    getProjects() {
+        this.projects = action.projects;
+        this.emit("change");
+    }
+
+    receiveProjects(data) {
+        data.forEach((project) => {
+            this.projects.push(project);
+        });
     }
 
     getAll() {
@@ -37,11 +38,11 @@ class ProjectStore extends EventEmitter {
     handleActions(action) {
         switch(action.type) {
             case "CREATE_PROJECT":
+                console.log("invoked create project action handle!!");
                 this.createProject(action.text);
                 break;
-            case "RECEIVE_PROJECT":
-                this.projects = action.projects;
-                this.emit("change");
+            case "RECEIVE_PROJECTS":
+                this.receiveProjects(action.data);
                 break;
         }
         console.log('ProjectStore received an action', action);

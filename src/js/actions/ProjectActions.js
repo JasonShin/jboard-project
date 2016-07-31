@@ -1,6 +1,7 @@
 import dispatcher from "../dispatcher";
 
 export function createProject(text) {
+    console.log("create project action dispatching!");
     dispatcher.dispatch({
         type: "CREATE_PROJECT",
         text
@@ -13,22 +14,9 @@ export function deleteProject(id) {
         id
     });
 }
-
-export function reloadProjects() {
-
-    dispatcher.dispatch({type: "FETCH_PROJECTS"});
-    setTimeout(() => {
-        dispatcher.dispatch({type: "RECEIVE_PROJECTS", projects: [
-            {
-                id: 11384714,
-                text: "new project 1",
-                complete: false,
-            },
-            {
-                id: 12083012930,
-                text: "new project 2",
-                complete: false,
-            },
-        ]})
-    }, 1000);
+export function receiveProjects(data) {
+    dispatcher.dispatch({
+        type: "RECEIVE_PROJECTS",
+        data
+    });
 }
