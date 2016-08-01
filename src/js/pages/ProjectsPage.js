@@ -4,6 +4,7 @@ import Project from '../components/Project';
 import ProjectStore from '../stores/ProjectStore';
 import * as ProjectActions from '../actions/ProjectActions';
 
+
 export default class ProjectsPage extends React.Component {
 
     state = {
@@ -18,8 +19,9 @@ export default class ProjectsPage extends React.Component {
     //Invoked after component mounted
     componentDidMount() {
         ProjectStore.on("change", this.getProjects);
-    }
 
+
+    }
     //Unbound them safely
     componentWillUnmount() {
         ProjectStore.removeListener("change", this.getProjects);
