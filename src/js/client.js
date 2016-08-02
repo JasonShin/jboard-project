@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, hashHistory } from "react-router";
+import { Router, Route, IndexRoute, hashHistory, browserHistory, routes } from "react-router";
 
 import Projects from './pages/ProjectsPage';
 import Project from './pages/SingleProjectPage';
@@ -19,7 +19,7 @@ projectAPI.getProjectData();
 const app = document.getElementById('app');
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+  <Router history={browserHistory} routes={routes}>
     <Route path="/" component={Layout}>
         <IndexRoute component={Projects}></IndexRoute>
         <Route path="projects" name="projects" component={Projects}></Route>

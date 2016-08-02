@@ -7,7 +7,11 @@ export default class Project extends React.Component {
 
     componentDidMount() {
         //Associate draggable to current component wrapper
-        $(this._container).draggable();
+        $(this._container).draggable({
+            stop: function(){
+                console.log("finished dragging!");
+            }
+        });
     }
 
     render() {
