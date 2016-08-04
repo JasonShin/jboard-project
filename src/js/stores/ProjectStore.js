@@ -20,6 +20,10 @@ class ProjectStore extends EventEmitter {
         this.emit("change");
     }
 
+    updateProject() {
+        
+    }
+
     getProjects() {
         this.projects = action.projects;
         this.emit("change");
@@ -41,6 +45,11 @@ class ProjectStore extends EventEmitter {
                 console.log("invoked create project action handle!!");
                 this.createProject(action.text);
                 break;
+
+            case "UPDATE_PROJECT":
+
+                break;
+
             case "RECEIVE_PROJECTS":
                 this.receiveProjects(action.data);
                 break;

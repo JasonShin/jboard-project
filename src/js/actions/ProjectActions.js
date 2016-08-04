@@ -14,6 +14,14 @@ export function deleteProject(id) {
         id
     });
 }
+
+export function updateProject(data) {
+    dispatcher.dispatch({
+        type: "UPDATE_PROJECT",
+        data
+    });
+}
+
 export function receiveProjects(data) {
     dispatcher.dispatch({
         type: "RECEIVE_PROJECTS",
