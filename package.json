@@ -22,7 +22,8 @@
     "react-dom": "^0.14.6",
     "react-router": "^1.0.3",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "snyk": "^1.88.1"
   },
   "devDependencies": {
     "css-loader": "^0.23.1",
@@ -31,8 +32,11 @@
     "style-loader": "^0.13.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot"
+    "dev": "webpack-dev-server --content-base src --inline --hot",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "snyk": true
 }
